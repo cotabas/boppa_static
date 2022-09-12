@@ -1,13 +1,61 @@
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   height: 100vh;
-  background: linear-gradient(30deg, #444540 30%, #fff8dc 30%);
+  /* background-image: url("../pix/bg_gal.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* background: linear-gradient(30deg, #444540 30%, #fff8dc 30%); */
   color: #454541;
   display: flex;
   justify-content: center;
 }
+#bg_flower, #bg_gal {
+  position: fixed;
+}
+#bg_flower {
+  top: 0;
+  left: 0;
+  height: 50vh;
+}
+#bg_gal {
+  bottom: 0;
+  right: 0;
+  height: 70vh;
+}
 
-img {
-
+#logo {
+  position: sticky;
   width: 150px;
   height: 150px;
+  z-index: 999;
+}
+
+#top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: #fff8dc;
+  transform: skew(30deg);
+  transform-origin: top;
+}
+
+#break_edge {
+  width: .5em;
+  height: 100%;
+  background-color: #454541;
+}
+
+#bottom {
+  position: absolute;
+  height: 70vh;
+  width: 100%;
+  background-color: #454541;
+  top: 50vh;
+  left: 0;
+  transform: skew(-30deg);
+  transform-origin: top;
 }
