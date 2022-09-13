@@ -1,16 +1,21 @@
-html {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&family=Poppins:wght@300&display=swap');
+html, body {
   max-width: 100%;
+  max-height: 100%;
   overflow-x: hidden;
+  
 }
 body {
-  height: 100vh;
   /* background-image: url("../pix/bg_gal.jpg");
   background-repeat: no-repeat;
   background-size: cover; */
   /* background: linear-gradient(30deg, #444540 30%, #fff8dc 30%); */
+  margin: 0;
   color: #454541;
   display: flex;
   justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 #bg_flower, #bg_gal {
   position: fixed;
@@ -27,20 +32,30 @@ body {
 }
 
 #logo {
-  position: sticky;
+  position: absolute;
   width: 150px;
   height: 150px;
   z-index: 999;
 }
 
-#top {
+#intro {
   position: absolute;
+  top: 9em;
+  width: 40%;
+  color: #454541;
+  z-index: 999;
+  margin-left: 10em;
+}
+#top {
+  /* position: absolute; */
   top: 0;
+  left: 0;
   width: 100%;
   height: 50vh;
   background-color: #fff8dc;
   transform: skew(30deg);
   transform-origin: top;
+  overflow-x: hidden;
 }
 
 #break_edge {
