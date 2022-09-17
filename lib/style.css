@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&family=Poppins:wght@300&display=swap');
 html, body {
-  max-width: 100%;
+  /* max-width: 100%;
   max-height: 100%;
  
-  overflow-x: hidden;
+  overflow-x: hidden; */
+
+  --mobile-visible: visible;
   
 }
 body {
@@ -11,15 +13,83 @@ body {
   background-repeat: no-repeat;
   background-size: cover; */
   /* background: linear-gradient(30deg, #444540 30%, #fff8dc 30%); */
-  min-width: 550px;
+  background-color: #fff8dc;
+  width: 100%;
+  min-height: 100%;
   margin: 0;
   color: #454541;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: min(25%, 300px) auto;
+  grid-template-rows: 147px 800px max(50%, 200px);
   font-family: 'Oswald', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
+
+.social {
+  width: 20px;
+}
+a {
+  color: #454541;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 60%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+header {
+  grid-area: 1 / 2 / 1 / 2;
+  justify-self: center;
+}
+
+#menu {
+  display: flex;
+  gap: 2em;
+}
+
+#left_flower {
+  grid-area: 1 / 1 / 3 / 1;
+  z-index: -1;
+}
+
+section {
+  grid-area: 2 / 2 / 2 / 2;
+}
+
+.back_visible {
+  background-color: #fff8dc;
+  padding: 1em;
+}
+
+footer {
+  background-color: #454541;
+  color: #fff8dc;
+  grid-area: 3 / 1 / 4 / 3;
+  justify-items: center;
+}
+
+footer a {
+  color: #fff8dc;
+}
+/* #left_flower, #right_flower {
+  position: absolute;
+  z-index: -1;
+}
+#left_flower {
+  left: 0;
+  top: 200px;
+}
+
+#right_flower {
+  right: 0;
+  top: 600px;
+} */
 #bg_flower, #bg_gal {
+  visibility: var(--mobile-visible);
   position: fixed;
 }
 #bg_flower {
@@ -32,30 +102,32 @@ body {
   right: 0;
   height: 70vh;
 }
-
-header {
+/* header {
   position: absolute;
+  width: 100%;
   display: grid;
+  justify-content: center;
   z-index: 999;
-}
-
+} */
 #logo {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  z-index: 999;
+  /* position: absolute; */
+  /* justify-self: center; */
+  padding-right: 10em;
+  width: 147px;
+  height: 147px;
 }
 
-#intro {
+/* #intro {
   position: absolute;
   top: 9em;
   width: 40%;
   color: #454541;
   z-index: 999;
   margin-left: 10em;
-}
+} */
 #top {
   /* position: absolute; */
+  visibility: var(--mobile-visible);
   top: 0;
   left: 0;
   width: 100%;
@@ -79,6 +151,7 @@ header {
 
 #bottom {
   position: absolute;
+  visibility: var(--mobile-visible);
   height: 70vh;
   width: 100%;
   min-width: 1050px;
@@ -92,7 +165,13 @@ header {
 }
 
 @media screen and (max-width: 800px) {
-  #bottom {
-    min-width: none;
+  html, body {
+    --mobile-visible: hidden;
   }
+  /* #top {
+    height: 100%;
+  } */
+  /* #bottom {
+    min-width: 400px;
+  } */
 }
