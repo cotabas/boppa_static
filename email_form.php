@@ -1,33 +1,34 @@
 <?php
-    $errors = '';
-    $myemail = 'cotabas@gmail.com';
-    if(empty($_POST['name'])  ||
-       empty($_POST['email']) ||
-       empty($_POST['message']))
-    {
-        $errors .= "\n Error: all fields are required";
-    }
-    $name = $_POST['name'];
-    $email_address = $_POST['email'];
-    $message = $_POST['message'];
-    // if (!preg_match(
-    // "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",
-    // $email_address))
-    // {
-    //     $errors .= "\n Error: Invalid email address";
-    // }
-    
-    if( empty($errors))
-    {
-    $to = $myemail;
-    $email_subject = "Contact form submission: $name";
-    $email_body = "You have received a new message. ".
-    " Here are the details:\n Name: $name \n ".
-    "Email: $email_address\n Message \n $message";
-    $headers = "From: $myemail\n";
-    $headers .= "Reply-To: $email_address";
-    mail($to,$email_subject,$email_body,$headers);
-    //redirect to the 'thank you' page
-    header('Location: index.html');
-    }
-    ?>
+require 'vendor/autoload.php'; // If you're using Composer (recommended)
+// Comment out the above line if not using Composer
+// require("<PATH TO>/sendgrid-php.php");
+// If not using Composer, uncomment the above line and
+// download sendgrid-php.zip from the latest release here,
+// replacing <PATH TO> with the path to the sendgrid-php.php file,
+// which is included in the download:
+// https://github.com/sendgrid/sendgrid-php/releases
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$name = $_POST['name'];
+$email_address = $_POST['email'];
+$message = $_POST['message'];
+
+$email = new \SendGrid\Mail\Mail();
+$email->setFrom("mo@cptmo.dev", "from your site");
+$email->setSubject("New contact from $name @ $email_address");
+$email->addTo("cotabas@gmail.com", "Example User");
+$email->addContent("text/plain", "Message from the site: \n \n $message \n \n Here's their email again: $email_address");
+
+$sendgrid = new \SendGrid($_ENV['SENDGRID_API_KEY']);
+try {
+	$response = $sendgrid->send($email);
+	header('Location: index.html?sent=good');
+//    print $response->statusCode() . "\n";
+//    print_r($response->headers());
+//    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
+?>
