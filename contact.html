@@ -10,21 +10,8 @@
   <title>Boppa pdx</title>
 </head>
 <body>
-<!-- Layout stuff begin -->
-  <!-- <img src="pix/bg_gal.jpg" alt="background image of tomato galletes" id="bg_gal">
-  <img src="pix/bg_flower.jpg" alt="background image of plated salad with flowers" id="bg_flower">
-  <div id="top">
-    <div id="break_edge"></div>
-  </div>
-  <div id="bottom">
-    <div id="break_edge_bottom"></div>
-  </div> -->
 
-  
-  <!-- <img id="right_flower" src="pix/right_flower.png" alt="flower background"> -->
-<!-- Layout stuff end -->
-
-<label for="checkbox_toggle" id="hamburger">&#9776;</label>
+  <label for="checkbox_toggle" id="hamburger">&#9776;</label>
 <input type="checkbox" id="checkbox_toggle" />
     <ul id="mobile_menu" class="back_visible">
       <li>
@@ -44,6 +31,7 @@
       </li>
     </ul>
 
+    
 <div id="good_send" class="back_dark">
   <button class="close">X</button>
    <h3>Thank you for reaching out, I'll get back to you as soon as possible</h3>
@@ -73,9 +61,19 @@
         <a href="https://www.instagram.com/boppa503/"><img class="social" src="pix/insta.png" alt="instagram link"></a>
       </li>
     </ul>
-    <p class="back_visible">Farm to table supper club using locally sourced ingredients from farms and vendors around the portland area</p>
 
-
+    <p class="back_visible">Use the form below to send me a message if you're looking for catering or collaborating</p>
+    <div id="form_container" class="back_dark">
+      <form method="post" name="contact_form" action="email_form.php">
+        name
+        <input type="text" name="name">
+        email *
+        <input type="email" name="email" required>
+        <br />
+        <textarea name="message"></textarea>
+        <input id="sub_button" type="submit" value="submit">
+    </form>
+    </div>
   </section>
 
   <footer>

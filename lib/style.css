@@ -9,10 +9,6 @@ html, body {
   
 }
 body {
-  /* background-image: url("../pix/bg_gal.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* background: linear-gradient(30deg, #444540 30%, #fff8dc 30%); */
   background-color: #fff8dc;
   width: 100%;
   min-height: 100%;
@@ -20,7 +16,7 @@ body {
   color: #454541;
   display: grid;
   grid-template-columns: min(25%, 300px) auto;
-  grid-template-rows: 147px 800px max(50%, 200px);
+  grid-template-rows: 147px 1fr 947px max(50%, 200px);
   font-family: 'Oswald', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
@@ -33,7 +29,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover, button:hover, #sub_button:hover {
   opacity: 60%;
 }
 
@@ -43,37 +39,148 @@ ul {
 }
 header {
   grid-area: 1 / 2 / 1 / 2;
-  justify-self: center;
+  justify-self: start;
 }
 
 #menu {
+  visibility: var(--mobile-visible);
   display: flex;
   gap: 2em;
 }
 
 #left_flower {
-  grid-area: 1 / 1 / 3 / 1;
+  grid-area: 3 / 1 / 4 / 1;
   z-index: -1;
 }
 
 section {
-  grid-area: 2 / 2 / 2 / 2;
+  grid-area: 3 / 2 / 4 / 2;
 }
 
 .back_visible {
-  background-color: #fff8dc;
+  background-color: #fff8dcea;
+  padding: 1em 0;
+  width: min(90%, 30em);
+}
+
+.back_dark {
+  background-color: #454541ce;
   padding: 1em;
 }
 
 footer {
   background-color: #454541;
   color: #fff8dc;
-  grid-area: 3 / 1 / 4 / 3;
+  grid-area: 4 / 1 / 5 / 3;
   justify-items: center;
 }
 
 footer a {
   color: #fff8dc;
+}
+
+#form_container {
+  width: min(90%, 30em);
+  padding-right: 20px;
+}
+input, textarea {
+  background-color: #fff8dcea;
+  border: 0;
+  width: 100%; 
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: none;
+  outline: none;
+}
+
+input:invalid:focus {
+  border: 1px solid rgb(192, 1, 1);
+  box-shadow: 2px 1px 5px rgb(214, 0, 0);
+}
+
+form {
+  color: #fff8dc;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  /* overflow: clip; */
+}
+
+#sub_button {
+  width: 7em;
+  height: 2em;
+  align-self: flex-end;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+  resize: none;
+  height: 15em;
+}
+
+#logo {
+  padding-left: 2em;
+  width: 147px;
+  height: 147px;
+}
+
+#good_send {
+  visibility: hidden;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 200px;
+  color: #fff8dc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.close {
+  background-color: #fff8dc;
+  width: 2em;
+  height: 2em;
+  position: inherit;
+  top: 1em;
+  right: 1em;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  border: 0;
+  font-weight: 900;
+}
+
+#checkbox_toggle {
+  visibility: hidden;
+}
+
+#hamburger {
+  visibility: hidden;
+  font-size: 3em;
+  text-decoration: none;
+  color: #454541;
+  position: fixed;
+  right: .25em;
+}
+#mobile_menu {
+  visibility: hidden;
+  position: fixed;
+  right: 0;
+  width: fit-content;
+  top: 3em;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+#mobile_menu li {
+  align-self: end;
+}
+#checkbox_toggle:checked ~ #mobile_menu {
+  visibility: visible;
+  
 }
 /* #left_flower, #right_flower {
   position: absolute;
@@ -88,7 +195,7 @@ footer a {
   right: 0;
   top: 600px;
 } */
-#bg_flower, #bg_gal {
+/* #bg_flower, #bg_gal {
   visibility: var(--mobile-visible);
   position: fixed;
 }
@@ -101,7 +208,7 @@ footer a {
   top: 30vh;
   right: 0;
   height: 70vh;
-}
+} */
 /* header {
   position: absolute;
   width: 100%;
@@ -109,13 +216,6 @@ footer a {
   justify-content: center;
   z-index: 999;
 } */
-#logo {
-  /* position: absolute; */
-  /* justify-self: center; */
-  padding-right: 10em;
-  width: 147px;
-  height: 147px;
-}
 
 /* #intro {
   position: absolute;
@@ -125,8 +225,7 @@ footer a {
   z-index: 999;
   margin-left: 10em;
 } */
-#top {
-  /* position: absolute; */
+/* #top {
   visibility: var(--mobile-visible);
   top: 0;
   left: 0;
@@ -162,9 +261,17 @@ footer a {
   transform-origin: top;
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 @media screen and (max-width: 800px) {
+
+  body {
+    grid-template-columns: minmax(.5em, auto) auto;
+  }
+
+  #hamburger {
+    visibility: visible;
+  }
   html, body {
     --mobile-visible: hidden;
   }
