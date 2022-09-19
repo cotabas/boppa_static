@@ -16,7 +16,7 @@ body {
   color: #454541;
   display: grid;
   grid-template-columns: min(25%, 300px) auto;
-  grid-template-rows: 147px 1fr 947px max(50%, 200px);
+  grid-template-rows: 147px 1fr 947px min(50%, 200px);
   font-family: 'Oswald', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
@@ -120,7 +120,7 @@ textarea {
 }
 
 #logo {
-  padding-left: 2em;
+  padding-left: 6em;
   width: 147px;
   height: 147px;
 }
